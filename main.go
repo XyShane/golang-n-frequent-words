@@ -11,6 +11,7 @@ import (
 	"bytes"
 	"container/heap"
 	"fmt"
+	"net/http"
 	"os"
 	"regexp"
 	"strconv"
@@ -131,6 +132,12 @@ func ReadFile(filePath string) string {
 	return buf.String()
 }
 
+func IndexHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Test")
+}
+
 func main() {
+	// http.HandleFunc("/", IndexHandler)
+	// http.ListenAndServe(":8000", nil)
 	PrintTopNFrequentWords(10, GetFrequencyMap(ReadFile("file.txt")))
 }
