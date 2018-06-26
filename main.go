@@ -10,7 +10,10 @@ import (
 	"bufio"
 	"bytes"
 	"container/heap"
+	"encoding/json"
 	"fmt"
+	"html/template"
+	"io/ioutil"
 	"net/http"
 	"os"
 	"regexp"
@@ -106,10 +109,27 @@ func GetFrequencyMap(content string) PriorityQueue {
 	return pq
 }
 
-func PrintTopNFrequentWords(n uint, pq PriorityQueue) {
+func GetTopNFrequentWords(n int, pq PriorityQueue) map[string]string {
+	nFromList := n
+
+	if pq.Len() < nFromList {
+		fmt.Println(`There are less words than ` + strconv.Itoa(nFromList) + ` retrieving ` + strconv.Itoa(pq.Len()) + ` instead.`)
+		nFromList = pq.Len()
+	}
+	var postMap = make(map[string]string, nFromList)
+	for i := 0; i < nFromList; i++ {
+		item := heap.Pop(&pq).(*Item)
+		postMap[item.value] = strconv.Itoa(item.priority)
+		fmt.Printf("%.2d:%s ", item.priority, item.value)
+	}
+
+	return postMap
+}
+
+func PrintTopNFrequentWords(n int, pq PriorityQueue) {
 
 	// Takes the top 10 from the list.
-	nFromList := 10
+	nFromList := n
 
 	if pq.Len() < nFromList {
 		fmt.Println(`There are less words than ` + strconv.Itoa(nFromList) + ` retrieving ` + strconv.Itoa(pq.Len()) + ` instead.`)
@@ -133,11 +153,32 @@ func ReadFile(filePath string) string {
 }
 
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Test")
+	templates := template.Must(template.ParseFiles("templates/index.html"))
+	if err := templates.ExecuteTemplate(w, "index.html", nil); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+}
+
+func CalculateHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method == "POST" {
+		body, err := ioutil.ReadAll(r.Body)
+		if err != nil {
+			http.Error(w, "Error reading request body", http.StatusInternalServerError)
+		}
+		results := GetTopNFrequentWords(10, GetFrequencyMap(string(body)))
+		encoder := json.NewEncoder(w)
+		if err := encoder.Encode(results); err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+		}
+	} else {
+		http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
+	}
 }
 
 func main() {
-	// http.HandleFunc("/", IndexHandler)
-	// http.ListenAndServe(":8000", nil)
-	PrintTopNFrequentWords(10, GetFrequencyMap(ReadFile("file.txt")))
+	http.HandleFunc("/", IndexHandler)
+	http.HandleFunc("/calculate", CalculateHandler)
+	http.ListenAndServe(":8000", nil)
+
+	// PrintTopNFrequentWords(10, GetFrequencyMap(ReadFile("file.txt")))
 }

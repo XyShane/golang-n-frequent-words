@@ -1,0 +1,48 @@
+<html>
+
+<head>
+</head>
+
+<body>
+    <div>
+        <textarea id="text-source" cols="50" rows="10" style="resize:none"></textarea>
+        <br>
+        <br>
+        <input type="submit" value="Send Request" onclick="submitText()">
+    </div>
+    <div id="word-results">
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    function submitText() {
+        $.ajax({
+            url: "/calculate",
+            method: "POST",
+            data: $('#text-source').val(),
+            success: rawData => {
+                let parsed = JSON.parse(rawData);
+                if (!parsed) return;
+                console.log(parsed);
+
+                let results = $('#word-results');
+                results.empty();
+
+                var sortedArray = [];
+                for (var i in parsed) {
+                    sortedArray.push([i, parsed[i]]);
+                }
+                sortedArray.sort();
+
+                $('#word-results').append(`<br>Word : Count<br><br>`);
+                for (var index in sortedArray) {
+                    let row = $(`<span> ${sortedArray[index][0]} : ${sortedArray[index][1]}</span><br>`);
+                    $('#word-results').append(row);
+                }
+            }
+        });
+        return false;
+    }
+</script>
+
+</html>
