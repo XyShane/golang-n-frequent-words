@@ -1,0 +1,117 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "ilhWancI2Sr61LERes4cvmFWbSg=",
+			"path": "bufio",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "jU6hnuOzIuq3frbgM7UyVp/3ofQ=",
+			"path": "bytes",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "Mo/9J+sc7NqmOrkqvQvodV5S9f8=",
+			"path": "compress/gzip",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "gjgbYbvhN9x29+2DAEE0IktkjVY=",
+			"path": "container/heap",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "gvd0wPzX9YWg/3fgukl+S3yfBgM=",
+			"path": "encoding/json",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "/IgtMOBRqTxEAfVs7ATBXQMVRf4=",
+			"path": "errors",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "mzoFlp43xtAjBf1Xc+iWtjRMjRs=",
+			"path": "fmt",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "ywE9KA40kVq0qKcAIqLgpoA0su4=",
+			"path": "github.com/jdkato/prose/internal/util",
+			"revision": "7a779a0ce551727b41b0b5b498d9d454d280859b",
+			"revisionTime": "2018-06-22T22:37:06Z"
+		},
+		{
+			"checksumSHA1": "YOKGUQfWNqboSz4+kDcaL91dA94=",
+			"path": "github.com/jdkato/prose/tokenize",
+			"revision": "7a779a0ce551727b41b0b5b498d9d454d280859b",
+			"revisionTime": "2018-06-22T22:37:06Z"
+		},
+		{
+			"checksumSHA1": "8DfGrB+5DqBcYFxmW2WY1D4kPUM=",
+			"path": "golang-n-frequent-words",
+			"revision": "44460aeec6717443b5e7dfd9299d84bc57117b31",
+			"revisionTime": "2018-06-26T11:03:03Z"
+		},
+		{
+			"checksumSHA1": "8M7pWiqTAG0Lc2ackWaApdSZF4g=",
+			"path": "gopkg.in/neurosnap/sentences.v1",
+			"revision": "a7f18ead1433a139742a8b42ce7a059cfb484d60",
+			"revisionTime": "2017-03-06T04:36:32Z"
+		},
+		{
+			"checksumSHA1": "w64yzhWFEMEqg7EwfMT+9HANyfA=",
+			"path": "gopkg.in/neurosnap/sentences.v1/data",
+			"revision": "a7f18ead1433a139742a8b42ce7a059cfb484d60",
+			"revisionTime": "2017-03-06T04:36:32Z"
+		},
+		{
+			"checksumSHA1": "zQMMnVrjkV4jxCbMPSyMMpvVRVQ=",
+			"path": "io",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "cncTBQuqslugM/9QKe5YHBPgVv8=",
+			"path": "io/ioutil",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "LNMKMmYYNipI1DkDqO7BmcLak6U=",
+			"path": "os",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "YvTngO2UpdLAbnbSNsZym4KnpDw=",
+			"path": "path/filepath",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "aleBYOFgAPpgQ3c3HzjKfAAE9uo=",
+			"path": "regexp",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "Gps8k7PeSyB5nUosByXnR6E3V7M=",
+			"path": "strconv",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "uv4drTK48xIZIEEumxjZTj/m//A=",
+			"path": "strings",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "ccs6vzzKEaHQVjmN3iKCu6ac+cI=",
+			"path": "time",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "PEG5E223Bpo4MPvgqg7ryYwcqYE=",
+			"path": "unicode",
+			"revision": ""
+		}
+	],
+	"rootPath": "golang-n-frequent-words"
+}
